@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>TTS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/TTS-styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <center>
+    <h1 class="title-text"><strong>Tiring reading words?</strong></h1>
+    <section id="testimonials">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+          <div class="carousel-item active first-back">
+            <img src="https://media.istockphoto.com/photos/lazy-student-girl-at-home-picture-id862239690?k=20&m=862239690&s=612x612&w=0&h=qfk5P9XDiSAXpQgz0V0IXhfljUDQe3V8FCRAUBqggfY=" alt="tiring-image" class="tiring-image" />
+          </div>
+          <div class="carousel-item second-back">
+            <img src="https://ggie.berkeley.edu/wp-content/uploads/2019/09/Listening_to_Music_Mindfully_1200x630.jpg" alt="listening-image" class="listening-image" />
+          </div>
+        </div>
+      </cemter>
+      </div>
+    </section>
+    <h3 class="subtitle"><strong>Trying to convert it to Audio🔊</strong></h3>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <form action="" method="post" enctype=multipart/form-data>
+              <label for="myfile" class="Your-file">Your file:</label><input type="file" id="myfile" name="input-file"><br/>
+              <label for="language" class="Language-label">Language</label>
+              <select id="language" class="language" name="language">
+                <option value="English" class="language">English</option>
+                <option value="Chinese" class="language">Chinese</option>
+              </select>
+              <input type="submit" value="convert" class="convert-btn btn btn-light">
+              </form>
+          </td>
+          <td>
+            <audio controls class="final-audio">
+              <source src="./static/convert.mp3" type="audio/mpeg">
+              你的瀏覽器不支援 audio tag！
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </center>
+</body>
+
+</html>
