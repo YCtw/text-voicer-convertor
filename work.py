@@ -36,8 +36,8 @@ def home():
         time.sleep(2)
         shutil.move("convert.mp3", "./static/convert.mp3")
         time.sleep(2)
-        return render_template("index1.html", done=True)
-    return render_template("index1.html")
+        return render_template("index.html", done=True)
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
