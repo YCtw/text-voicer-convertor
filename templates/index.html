@@ -43,12 +43,14 @@
               <input type="submit" value="convert" class="convert-btn btn btn-light">
               </form>
           </td>
+          {% if done %}
           <td>
             <audio controls class="final-audio">
               <source src="./static/convert.mp3" type="audio/mpeg">
               你的瀏覽器不支援 audio tag！
             </audio>
           </td>
+          {% endif %}
         </tr>
       </tbody>
     </table>
