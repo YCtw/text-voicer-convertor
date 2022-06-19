@@ -11,10 +11,13 @@ app = Flask(__name__)
 # ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif', 'docx'])
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
+audio_number = 0
 
 
 @app.route("/", methods=["GET","POST"])
 def home():
+    global audio_number
+    audio_number = audio_number + 1
     lang = "en"
     if request.method == "POST":
         time.sleep(2)
@@ -32,11 +35,11 @@ def home():
             content_list.append(para.text)
         recording_string = ''.join(content_list)
         t1 = gtts.gTTS(recording_string, lang=lang)
-        t1.save("convert.mp3")
+        t1.save(f"{audio_number}convert.mp3")
         time.sleep(2)
-        shutil.move("convert.mp3", "./static/convert.mp3")
+        shutil.move(f"{audio_number}convert.mp3", f"./static/{audio_number}convert.mp3")
         time.sleep(2)
-        return render_template("index.html", done=True)
+        return render_template("index.html", done=True, convert_mp3 = f"./static/{audio_number}convert.mp3")
     return render_template("index.html")
 
 if __name__ == '__main__':
