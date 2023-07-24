@@ -40,7 +40,7 @@ body {
 .subtitle {
   color: white;
   font-size: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 label {
@@ -55,6 +55,7 @@ label {
 }
 
 .Your-file {
+  right: 0px;
   color: white;
   font-weight: bold;
   margin-right: 19px;
@@ -64,6 +65,7 @@ label {
   color: white;
   font-weight: bold;
   margin-right: 10px;
+  left: 178px;
 }
 
 #btn {
@@ -74,25 +76,49 @@ label {
 }
 
 .language {
+  position: relative;
   font-family: 'Kdam Thmor Pro', sans-serif;
   font-weight: bold;
+  left: 177px;
+  width: 79.6px;
 }
 
 .convert-btn {
   font-family: 'Kdam Thmor Pro', sans-serif;
   font-weight: bold;
-  margin-left:135px;
-  position: relative;
-  bottom: 13px;
+  margin-left: 315px;
+  position: absolute;
+  bottom: 15px;
 }
 
 .final-audio {
+  margin-top: 35px;
   margin-left: 30px;
+  height: 40px;
 }
 
-#myfile {
+.file-submit {
+  right: 10px;
   color: white;
   font-family: 'Kdam Thmor Pro', sans-serif;
   font-weight: bold;
   width:240px;
+  position: relative
+}
+
+.convert-form{
+  position: relative;
+}
+
+.empty-alert{
+  color: red;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.loading-gif{
+  width: 90px;
+  position: absolute;
+  bottom: -8px;
+  right: 335px;
 }

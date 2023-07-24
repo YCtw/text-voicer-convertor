@@ -10,9 +10,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/TTS-styles.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script>
+    function validateFile(){
+        var inputElement = document.getElementById('myfile');
+        var files = inputElement.files;
+        if(files.length==0){
+            alert("Please choose a file first");
+            return false;
+        }
+        document.getElementById('loadingGif').style.display = "block";
+        var x = document.getElementsByClassName("convert-form");
+        x[0].submit();
+    }
+
+    function showDone(){
+        alert("Convert is done, your audio is ready in the bottom of the page!");
+    }
+
+    function contentEmpty(){
+        alert("The file you provided has empty content");
+    }
+
+  </script>
 </head>
 
+{% if done %}
+<body onload="showDone()">
+{% elif is_empty %}
+<body onload="contentEmpty()">
+{% else %}
 <body>
+{% endif %}
   <center>
     <h1 class="title-text"><strong>Tiring reading words?</strong></h1>
     <section id="testimonials">
@@ -25,7 +53,7 @@
             <img src="https://ggie.berkeley.edu/wp-content/uploads/2019/09/Listening_to_Music_Mindfully_1200x630.jpg" alt="listening-image" class="listening-image" />
           </div>
         </div>
-      </cemter>
+
       </div>
     </section>
     <h3 class="subtitle"><strong>Trying to convert it to Audio🔊</strong></h3>
@@ -33,28 +61,29 @@
       <tbody>
         <tr>
           <td>
-            <form action="" method="post" enctype=multipart/form-data>
-              <label for="myfile" class="Your-file">Your file:</label><input type="file" id="myfile" name="input-file"><br/>
+            <form action="" method="post" class="convert-form" enctype=multipart/form-data>
+              <label for="myfile" class="Your-file">Your file (.docx/.txt) - 1MB limited</label>
+              <input type="file" accept=".txt,.docx" class="file-submit" id="myfile" name="input-file"><br/>
               <label for="language" class="Language-label">Language</label>
               <select id="language" class="language" name="language">
                 <option value="English" class="language">English</option>
                 <option value="Chinese" class="language">Chinese</option>
               </select>
-              <input type="submit" value="convert" class="convert-btn btn btn-light">
-              </form>
+              <input type="button" value="convert" class="convert-btn btn btn-light" onclick="validateFile()">
+            </form>
           </td>
-          {% if done %}
           <td>
-            <audio controls class="final-audio">
-              <source src={{convert_mp3}} type="audio/mpeg">
-              你的瀏覽器不支援 audio tag！
-            </audio>
+              <div id="loadingGif" style="display:none"><img class="loading-gif" src="/static/loading.gif" alt="loading-gif" /></div>
           </td>
-          {% endif %}
         </tr>
       </tbody>
     </table>
+    {%if done %}
+    <audio controls class="final-audio">
+              <source src={{convert_mp3}} type="audio/mpeg">
+              你的瀏覽器不支援 audio tag！
+    </audio>
+    {% endif%}
   </center>
 </body>
-
 </html>
