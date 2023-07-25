@@ -23,18 +23,18 @@ def home():
         content_list = []
         file = request.files['input-file']
 
+        # input is text file
+        if file.content_type == "text/plain":
+            # since file has been under reviewed above, we need to back the pointer to the beginning
+            file.seek(0)
+            recording_string = file.read().decode('utf-8')
+
         #input is docx
-        try:
+        else:
             doc = docx.Document(file)
             for para in doc.paragraphs:
                 content_list.append(para.text)
                 recording_string = ''.join(content_list)
-
-        #input is text file
-        except:
-            #since file has been under reviewed above, we need to back the pointer to the beginning
-            file.seek(0)
-            recording_string = file.read().decode('utf-8')
 
         #if the converted string is empty
         if recording_string == "":
