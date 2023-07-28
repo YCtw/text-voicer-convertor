@@ -25,8 +25,6 @@ def home():
 
         # input is text file
         if file.content_type == "text/plain":
-            # since file has been under reviewed above, we need to back the pointer to the beginning
-            file.seek(0)
             recording_string = file.read().decode('utf-8')
 
         #input is docx
